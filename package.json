@@ -1,0 +1,21 @@
+{
+  "name": "cf-ai-searcheragent",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "db:generate": "drizzle-kit generate",
+    "db:up": "drizzle-kit up",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "^0.7.4",
+    "drizzle-orm": "^0.44.6",
+    "hono": "^4.9.10",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.5",
+    "wrangler": "^4.4.0"
+  }
+}
