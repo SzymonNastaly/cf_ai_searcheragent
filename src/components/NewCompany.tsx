@@ -8,7 +8,7 @@ export default function NewCompany() {
       hx-target="#companies-list"
       hx-swap="beforeend"
       hx-ext="json-enc"
-      class="min-w-72 mx-6"
+      class="mx-6 flex min-w-72 flex-row items-center"
     >
       <Input
         type="text"

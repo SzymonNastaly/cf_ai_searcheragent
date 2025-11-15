@@ -3,19 +3,47 @@
   "name": "cf-ai-searcheragent",
   "main": "src/index.tsx",
   "compatibility_date": "2025-10-10",
+  "compatibility_flags": ["nodejs_compat"],
   "d1_databases": [
     {
       "binding": "searcheragent_db",
       "database_name": "searcheragent-db",
       "database_id": "d9290b2d-08a0-4488-be5e-d4c5da0c4526",
+      "preview_database_id": "6b9ce871-edc0-46a8-b3ed-a38b9a3791ed",
+      "migrations_dir": "./drizzle/migrations/",
     },
   ],
+  "browser": {
+    "binding": "MYBROWSER",
+  },
+  "vars": {
+    // "MODEL": "gpt-5-mini-2025-08-07",
+    "MODEL": "gpt-5-nano-2025-08-07",
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "ScraperAgent", "class_name": "ScraperAgent" }],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["ScraperAgent"],
+    },
+  ],
+  "r2_buckets": [
+    {
+      "binding": "JOB_DETAILS_BUCKET",
+      "bucket_name": "job-details",
+      "preview_bucket_name": "job-details-dev",
+      "remote": true,
+    },
+  ],
+  "ai": { "binding": "AI" },
+  "assets": {
+    "directory": "src/public",
+  },
   // "compatibility_flags": [
   //   "nodejs_compat"
   // ],
-  // "vars": {
-  //   "MY_VAR": "my-variable"
-  // },
   // "kv_namespaces": [
   //   {
   //     "binding": "MY_KV_NAMESPACE",
@@ -43,4 +71,3 @@
   //   "head_sampling_rate": 1
   // }
 }
-

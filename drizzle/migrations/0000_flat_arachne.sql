@@ -6,4 +6,9 @@ CREATE TABLE `companies` (
 	`timestamp` text DEFAULT CURRENT_TIMESTAMP NOT NULL
 );
 --> statement-breakpoint
-DROP TABLE `posts`;
+CREATE TABLE `jobs` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	`name` text,
+	`company_id` integer,
+	FOREIGN KEY (`company_id`) REFERENCES `companies`(`id`) ON UPDATE no action ON DELETE no action
+);
