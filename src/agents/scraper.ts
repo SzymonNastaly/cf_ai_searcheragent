@@ -16,10 +16,10 @@ class ScraperAgent extends Agent<Env> {
       await page.goto(url, { waitUntil: "domcontentloaded" });
       const cleantContent = await page.evaluate(() => {
         const cloned = document.body.cloneNode(true);
-        const unnecessarryElements = cloned.querySelectorAll(
+        const unecessaryElements = cloned.querySelectorAll(
           "script, style, svg, noscript, iframe",
         );
-        toRemove.forEach((el) => el.remove());
+        unecessaryElements.forEach((el) => el.remove());
         return cloned.innerHtml;
       });
       await page.close();
@@ -44,7 +44,7 @@ class ScraperAgent extends Agent<Env> {
             client,
             job.url,
           );
-          return { ...job, description };
+          return { jobName: job.jobName, url: job.url...job, description };
         }),
       );
 

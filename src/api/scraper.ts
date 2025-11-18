@@ -48,6 +48,5 @@ scraperRouter.post(
     }
   },
 );
-// hey this is comment
 
 export default scraperRouter;
