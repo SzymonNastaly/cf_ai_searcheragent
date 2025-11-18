@@ -2,6 +2,7 @@ import { z } from "zod";
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { drizzle } from "drizzle-orm/d1";
+import { eq } from "drizzle-orm";
 
 import { Env } from "../bindings";
 import { companies, SelectCompany } from "../db/schema";
@@ -34,5 +35,12 @@ companiesRouter.post(
     return c.html(<Company company={results[0]} />);
   },
 );
+
+companiesRouter.delete("/:id", async (c) => {
+  const db = drizzle(c.env.searcheragent_db);
+  const id = parseInt(c.req.param("id"));
+  await db.delete(companies).where(eq(companies.id, id));
+  return c.text("", 200);
+});
 
 export default companiesRouter;

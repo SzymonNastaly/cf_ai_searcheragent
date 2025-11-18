@@ -7,4 +7,6 @@ export type Env = {
   ScraperAgent: AgentNamespace<ScraperAgent>;
   JOB_DETAILS_BUCKET: R2Bucket;
   AI: Ai;
+  OPENAI_API_KEY: string;
+  MODEL: string;
 };

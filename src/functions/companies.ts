@@ -13,3 +13,10 @@ export async function insertCompany(
 ): Promise<SelectCompany[]> {
   return await db.insert(companies).values(data).returning();
 }
+
+export async function deleteCompany(
+  db: DrizzleD1Database,
+  data: any,
+): Promise<any> {
+  return await db.delete(companies).where(eq(companies.id, id));
+}
